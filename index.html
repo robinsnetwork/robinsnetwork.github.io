@@ -1,0 +1,619 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta property="og:title" content="My Portfolio | Robin's Network">
+  <meta property="og:description" content="">
+  <link rel="icon" type="image/png" sizes="32x32" href="profile.png">
+  <meta property="og:image" content="https://robinsnetwork.github.io/a.jpg">
+  <meta property="og:url" content="https://robinsnetwork.github.io/">
+  <meta property="og:type" content="website">
+  
+  <title>Robin's Network | Portfolio </title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@700&display=swap');
+
+    html, body {
+      background-color: #121212;
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      overflow-x: hidden;
+    }
+    body {
+      font-family: Arial, sans-serif;
+      color: #ffffff;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Fixed Header Styling */
+    header {
+      display: flex;
+      align-items: center;
+      background: #1e1e1e;
+      color: #ff697d;
+      padding: 15px;
+      font-size: 24px;
+      font-family: 'Raleway', sans-serif;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 1000;
+    }
+
+    /* Space for fixed header */
+    .content-wrapper {
+      padding-top: 80px;
+    }
+
+    /* Logo Image */
+    .logo-img {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      margin-right: 15px;
+    }
+    section {
+      flex: 1;
+      padding: 20px;
+      text-align: center;
+    }
+</style>
+<style>
+  .container {
+            width: 80%;
+            margin: auto;
+            padding: 50px 0;
+        }
+
+        /* About Section */
+        .about-section {
+            display: flex;
+            align-items: center;
+            padding: 40px;
+            border-radius: 10px;
+        }
+
+        .image-container {
+            position: relative;
+            width: 40%;
+            text-align: center;
+        }
+
+        .image-container img {
+            width: 100%;
+            border-radius: 10px;
+            display: block;
+        }
+
+        .image-frame {
+            position: absolute;
+            top: -10px;
+            left: -10px;
+            width: 100%;
+            height: 100%;
+            border: 8px solid #ff535c;
+            border-radius: 10px;
+            z-index: -1;
+        }
+
+        .text-container {
+            width: 60%;
+            padding-left: 40px;
+        }
+
+        h1 {
+            font-size: 36px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        h2 {
+            font-size: 22px;
+            color: #ff535c;
+            margin-bottom: 10px;
+        }
+
+        p {
+            font-size: 16px;
+            line-height: 1.6;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        ul li {
+            font-size: 16px;
+            padding: 5px 0;
+        }
+
+        ul li::before {
+            content: ">";
+            color: #ff535c;
+            font-weight: bold;
+            padding-right: 10px;
+        }
+
+        .bottom-bar {
+            width: 100px;
+            height: auto;
+            background: #88a8ff;
+            margin-top: 20px;
+            color: rgba(0, 0, 0, 0.829) ;
+            margin-left: auto;
+            margin-right: 60px;
+            text-align: center;
+            font-weight: bold;
+            font-size: 26px;
+            cursor: pointer;
+
+        }
+
+        @media (max-width: 768px) {
+            .about-section {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .image-container, .text-container {
+                width: 100%;
+            }
+
+            .text-container {
+                padding-left: 0;
+                margin-top: 20px;
+            }
+        }
+</style>
+<style>
+    #portfolio-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 16px;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .portfolio-item {
+      background-color: #1e1e1e;
+      padding: 10px;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+      opacity: 0;
+      transform: scale(0.5);
+      transition: transform 0.6s ease-out, opacity 0.6s ease-out;
+    }
+
+    .portfolio-item.show {
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    .portfolio-item:hover {
+      transform: scale(1.2);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.7);
+    }
+
+    img {
+      width: 100%;
+      border-radius: 6px;
+      transition: transform 0.3s ease;
+    }
+
+    .thumbnail-title {
+      font-size: 14px;
+      font-weight: bold;
+      color: #ffffff;
+      margin-top: 8px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      padding: 0 10px;
+      text-align: left;
+    }
+
+    /* My Recreation Section */
+    .recreation-section {
+      text-align: center;
+      padding: 40px 20px;
+      background: #1e1e1e;
+    }
+
+    .recreation-section h2 {
+      font-size: 26px;
+      color: #ffffff;
+      margin-bottom: 20px;
+    }
+
+    .recreation-item {
+      width: 80%;
+      max-width: 1000px;
+      margin: 15px auto;
+      position: relative;
+      overflow: hidden;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+      transition: transform 0.3s ease;
+    }
+
+    .recreation-item img {
+      width: 100%;
+      border-radius: 10px;
+      transition: transform 0.3s ease;
+    }
+
+    .recreation-item:hover {
+      transform: scale(1.04);
+    }
+
+    footer {
+      background: #1e1e1e;
+      color: #ffffff;
+      padding: 10px;
+      text-align: center;
+    }
+  </style>
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap');
+
+body {
+  background-color: #121212;
+  font-family: 'Roboto', sans-serif;
+  color: #ffffff;
+  margin: 0;
+  padding: 0;
+}
+
+.youtubers-section {
+  width: 100%;
+  background: #1e1e1e;
+  padding: 40px 0;
+}
+
+.youtubers-header {
+  display: flex;
+  align-items: center;
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 10px 20px;
+  border-bottom: 2px solid #ff69b4;
+}
+
+.youtube-logo {
+  width: 40px;
+  height: 28px;
+  margin-right: 10px;
+}
+
+.youtubers-header h2 {
+  font-size: 24px;
+  color: #ffffff;
+  margin: 0;
+}
+
+.youtuber-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  gap: 15px;
+  padding: 20px;
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.youtuber-card {
+  display: flex;
+  align-items: center;
+  width: 320px;
+  padding: 10px;
+  border-radius: 10px;
+  background-color: #181818;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  cursor: pointer;
+}
+
+.youtuber-card:hover {
+  background-color: #222222;
+  transform: scale(1.03);
+}
+
+.youtuber-card img {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  margin-right: 15px;
+}
+
+.youtuber-info {
+  text-align: left;
+}
+
+.youtuber-info h3 {
+  font-size: 16px;
+  font-weight: 500;
+  margin: 0;
+  color: #ffffff;
+}
+
+.youtuber-info p {
+  font-size: 14px;
+  color: #aaaaaa;
+  margin: 4px 0 0;
+}
+
+</style>
+
+<style>
+  * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+  }
+
+
+  .containera {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform:translateX(-50%)translateY(-50%) ;
+      width: 150px;
+      height: 150px;
+      display: none; /* Hidden until images load */
+      z-index: 2100;
+  }
+
+  .profilea, .shielda {
+      position: absolute;
+      width: 150px;
+      height: 150px;
+      opacity: 0;
+  }
+
+  .profilea {
+      animation: popUp 0.6s ease-out forwards, exitUp 1s 2.6s forwards;
+  }
+
+  .shielda {
+      transform: scale(0.5);
+      animation: popUp 0.6s 0.3s ease-out forwards, rotateShield 1s 1s ease-in-out forwards, exitUp 1s 2.6s forwards;
+  }
+
+  @keyframes popUp {
+      0% { transform: scale(0.5); opacity: 0; }
+      100% { transform: scale(1); opacity: 1; }
+  }
+
+  @keyframes rotateShield {
+      0% { transform: scale(1) rotate(0deg); }
+      100% { transform: scale(1) rotate(360deg); }
+  }
+
+  /* Default Exit Animation (For Desktop) */
+  @keyframes exitUp {
+      0% { transform: translateY(0); opacity: 1; }
+      100% { transform: translateY(-90px); opacity: 0; }
+  }
+
+  /* Mobile-Specific Animation */
+  @media (max-width: 768px) {
+      @keyframes exitUp {
+          0% { transform: translateY(0); opacity: 1; }
+          100% { transform: translateY(-90px); opacity: 0; }
+      }
+  }
+
+  #bl{width: 100%;height: 100%;position: fixed;top: 0;left: 0;background: black; transition: 800ms;z-index: 2000;}
+</style>
+</head>
+<body>
+  
+  <!-- Fixed Header -->
+  <header>
+    <img src="profile.png" alt="Logo" class="logo-img"> 
+    Robin's Network | Portfolio
+  </header>
+
+  <!-- Add padding to prevent content from hiding under fixed header -->
+  <div class="content-wrapper">
+  
+    <!-- About Me Section -->
+    <div class="container">
+      <div class="about-section">
+          <div class="image-container">
+              <img src="profile.png" alt="Profile Image">
+              <div class="image-frame"></div>
+          </div>
+          <div class="text-container">
+              <h1>About Me</h1>
+              <h2>Robins Network</h2>
+              <p>
+                  I am a passionate crypto enthusiast with a deep understanding of blockchain, digital assets, 
+                  and decentralized finance. Over the past year, I’ve also honed my skills in thumbnail design, 
+                  creating eye-catching visuals that drive engagement and enhance brand identity.
+              </p>
+
+              <h2>Why Me?</h2>
+              <ul>
+                  <li>Crypto-Savvy – Up-to-date with the latest trends in cryptocurrency.</li>
+                  <li>Thumbnail Design – 1+ year of experience crafting high-quality visuals.</li>
+                  <li>Attention to Detail – Ensuring your brand vision is met.</li>
+                  <li>Fast & Reliable – On-time delivery without compromising quality.</li>
+                  <li>Passion for Innovation – Always exploring new design trends.</li>
+              </ul>
+              <div class="bottom-bar" onclick="window.open('https://t.me/ROBININSIGHT');">Hire ME</div>
+          </div>
+      </div>
+  </div>
+
+    <!-- Portfolio Section -->
+    <section>
+      <h2>Thumbnail Projects</h2>
+      <div id="portfolio-container">
+        <!-- Projects will be dynamically inserted here -->
+      </div>
+    </section>
+
+    <!-- My Recreation Section -->
+    <section class="recreation-section">
+      <h2>Recreation Projects</h2>
+      <div class="recreation-item">
+        <img src="c1.png" alt="Recreation Work 1">
+      </div>
+      <div class="recreation-item">
+        <img src="c2.png" alt="Recreation Work 2">
+      </div>
+    </section>
+
+    <section class="youtubers-section">
+      <div class="youtubers-header">
+        <img src="yt.png" alt="YouTube Logo" class="youtube-logo">
+        <h2>YouTubers I've Worked with</h2>
+      </div>
+      <div id="youtuber-container" class="youtuber-container">
+        <!-- YouTubers will be dynamically inserted here -->
+      </div>
+    </section>
+    
+
+  </div>
+
+  <footer>© Copyright 2025 Robin's Network</footer>
+  
+  <script>
+    fetch('filenames.txt')
+      .then(response => response.text())
+      .then(text => {
+        let imageCount = 0;
+        let projectNames = [];
+        let aboutMeText = "Welcome to my portfolio!";
+        let lines = text.split('\n');
+        
+        lines.forEach(line => {
+          line = line.trim();
+          if (/^about me\s*=/i.test(line)) {
+            aboutMeText = line.replace(/^about me\s*=/i, '').trim();
+          } else if (/^image\s+count/i.test(line)) {
+            let match = line.match(/image\s+count\s*=\s*(\d+)/i);
+            if (match) {
+              imageCount = parseInt(match[1]);
+            }
+          } else if (/^\d+\..+/.test(line)) {
+            projectNames.push(line.replace(/^\d+\.\s*/, ''));
+          }
+        });
+
+        let container = document.getElementById('portfolio-container');
+        let delay = 200;
+
+        if (imageCount > 0 && projectNames.length > 0) {
+          for (let i = 1; i <= imageCount; i++) {
+            let div = document.createElement('div');
+            div.className = 'portfolio-item';
+            let img = document.createElement('img');
+            img.src = `project%20${i}.png`;
+            img.alt = `Project ${i}`;
+            div.appendChild(img);
+            let p = document.createElement('p');
+            p.className = 'thumbnail-title';
+            p.textContent = projectNames[i - 1] ? projectNames[i - 1] : `Project ${i}`;
+            div.appendChild(p);
+            container.appendChild(div);
+            setTimeout(() => { div.classList.add('show'); }, i * delay);
+          }
+        }
+      });
+  </script>
+  <script>
+document.addEventListener("DOMContentLoaded", () => {
+  fetch('filenames.txt')
+    .then(response => response.text())
+    .then(text => {
+      let youtubers = [];
+      let lines = text.split('\n');
+
+      lines.forEach(line => {
+        line = line.trim();
+        let match = line.match(/^yt\.\d+\s*=\s*"(.+?)","\s*(.+?)"\s*;?$/);
+        if (match) {
+          youtubers.push({ name: match[1], subscribers: match[2] });
+        }
+      });
+
+      let container = document.getElementById('youtuber-container');
+      container.innerHTML = ""; // Clear previous content
+
+      if (youtubers.length > 0) {
+        youtubers.forEach((yt, index) => {
+          let div = document.createElement('div');
+          div.className = 'youtuber-card';
+
+          let img = document.createElement('img');
+          img.src = `y${index + 1}.png`; // Example: y1.png, y2.png, etc.
+          img.alt = yt.name;
+          div.appendChild(img);
+
+          let info = document.createElement('div');
+          info.className = 'youtuber-info';
+
+          let name = document.createElement('h3');
+          name.textContent = yt.name;
+          info.appendChild(name);
+
+          let subs = document.createElement('p');
+          subs.textContent = yt.subscribers + " Subscribers";
+          info.appendChild(subs);
+
+          div.appendChild(info);
+          container.appendChild(div);
+        });
+      } else {
+        container.innerHTML = '<p>No YouTubers found in filenames.txt</p>';
+      }
+    })
+    .catch(error => {
+      console.error("Error loading YouTubers:", error);
+    });
+});
+
+  </script>
+  <div id="bl"></div>
+<div class="containera">
+  <img src="shield.png" class="shielda">
+  <img src="profile1.png" class="profilea">
+</div>
+<script>
+  // Wait until both images load before showing the animation
+  const profileImg = document.querySelector(".profilea");
+  const shieldImg = document.querySelector(".shielda");
+  const container = document.querySelector(".containera");
+
+  let imagesLoaded = 0;
+  function checkImagesLoaded() {
+      imagesLoaded++;
+      if (imagesLoaded === 2) {
+          container.style.display = "block"; 
+          setTimeout('document.getElementById("bl").style = "opacity:0;";',2900);
+          setTimeout('document.getElementById("bl").style = "display:none;";',3300);
+          // Show container
+      }
+  }
+
+  profileImg.onload = checkImagesLoaded;
+  shieldImg.onload = checkImagesLoaded;
+
+  // Ensure cached images trigger the event
+  if (profileImg.complete) checkImagesLoaded();
+  if (shieldImg.complete) checkImagesLoaded();
+</script>
+</body>
+</html>
