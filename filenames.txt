@@ -1,0 +1,3 @@
+﻿image count = 20;
+how to make an ai
+how do we  live
