@@ -1,3 +1,4 @@
-﻿image count = 20;
+﻿image count = 3;
 how to make an ai
-how do we  live
+how do we live
+how robin does
