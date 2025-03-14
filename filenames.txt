@@ -1,4 +1,0 @@
-﻿image count = 3;
-ট্রেডিং করার আগে যেসব বিষয়গুলো জানা উচিত
-how do we live
-how robin does
