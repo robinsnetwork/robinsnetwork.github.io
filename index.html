@@ -490,7 +490,7 @@ body {
   <footer>© Copyright 2025 Robin's Network</footer>
   
   <script>
-    fetch('filenames.txt')
+    fetch('filenames.txt?' + new Date().getTime()) 
       .then(response => response.text())
       .then(text => {
         let imageCount = 0;
