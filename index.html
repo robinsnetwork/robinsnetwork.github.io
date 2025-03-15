@@ -520,7 +520,7 @@ body {
             let div = document.createElement('div');
             div.className = 'portfolio-item';
             let img = document.createElement('img');
-            img.src = `project%20${i}.png`;
+            img.src = `project%20${i}.png?v=${new Date().getTime()}`; // Add timestamp to prevent caching
             img.alt = `Project ${i}`;
             div.appendChild(img);
             let p = document.createElement('p');
@@ -558,8 +558,9 @@ document.addEventListener("DOMContentLoaded", () => {
           div.className = 'youtuber-card';
 
           let img = document.createElement('img');
-          img.src = `y${index + 1}.png`; // Example: y1.png, y2.png, etc.
+          img.src = `y${index + 1}.png?v=${new Date().getTime()}`; // Prevent caching
           img.alt = yt.name;
+
           div.appendChild(img);
 
           let info = document.createElement('div');
