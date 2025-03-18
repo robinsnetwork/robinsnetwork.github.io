@@ -17,5 +17,5 @@ image count = 13;
 10.Pi কয়েন Long term এর জন্য কেনা ঠিক হবে?
 11.Market Dump যেনো থামছেই না এর শেষ কোথায়
 12.Crypto Market Dump তাও আমি আশাবাদী
-13.যে কারণে বাংলাদেশে BITCOIN বৈধতা সম্ভব না
+
 
